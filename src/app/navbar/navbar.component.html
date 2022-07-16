@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-light  bg-dark sticky-top">
+  <img src="assets/images/uniquecart.png" alt="LOGO" height="60" width="62">
+    <a routerLink="landing" class="navbar-brand"><h3 class="text-primary logo1" style=" color:#00CFC8;"></h3></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="col-sm-10">
+        <h1 style=" color:#00CFC8;"><i>welcome {{auth.getUserDetails()}}</i></h1>
+    </div>
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item">
+          <a class="nav-link" style=" color:#00CFC8;" routerLink="landing" routerLinkActive="active" *ngIf="auth.isUserLoggedIn()">Home</a>
+        </li>
+       
+      </ul>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item ml-auto"*ngIf="!auth.isUserLoggedIn()">
+          <a class="nav-link" style=" color:#00CFC8;" routerLink="singup" routerLinkActive="active">singup</a>
+        </li>
+        <li class="nav-item "*ngIf="!auth.isUserLoggedIn()">
+          <a class="nav-link "   style=" color:#00CFC8;" routerLink="loginform" routerLinkActive="active"> LogIn</a>
+        </li> 
+        <li class="nav-item "*ngIf="auth.isUserLoggedIn()">
+          <a class="nav-link " type="button"   style=" color:#00CFC8;" routerLink="logout" routerLinkActive="active"> logout</a>
+        </li>  
+        <li class="nav-item " *ngIf="auth.isUserLoggedIn()">
+          <a class="nav-link "   style=" color:#00CFC8;" routerLink="display-cart" routerLinkActive="active"> ContactUs</a>
+        </li>    
+      </ul>
+    </div>
+    
+  </nav>
+  </div>
+ 

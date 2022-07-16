@@ -1,0 +1,125 @@
+
+<!--username:string;
+	 password:number;
+     companyname:string;
+      gstin:number;
+	 briefaboutcompany:string;
+	 website:string;
+	 emailId:string;
+     contactnumber:number;
+      postaladdress:numbe-->
+<h1   class="text-center">Sign Up</h1>
+<div style="width:40%; margin: 25px auto" >
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label><b>Email address</b></label>
+      <input [(ngModel)]="seller.emailId" type="email" class="form-control form-control-lg" id="emailId" name="emailId" placeholder="Enter email" emailId required autofocus  #emailId="ngModel">
+      <div  *ngIf="emailId.invalid && (emailId.dirty ||emailId.touched)" >
+          <div *ngIf="emailId.errors.required" >
+              Email is required.
+          </div>
+          <div *ngIf="emailId.errors.email">
+              Invalid Email.
+          </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Name</b></label>
+      <input [(ngModel)]="seller.username" type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Your name" required #username="ngModel">
+        <div  *ngIf="username.invalid && (username.dirty ||username.touched)">
+            <div *ngIf="username.errors.required">
+                Name is required.
+            </div>
+            <div *ngIf="username.errors.minlength">
+                Name must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label><b>website Name</b></label>
+        <input [(ngModel)]="seller.website" type="text" class="form-control form-control-lg" id="website" name="website" placeholder="Your website name" required #website="ngModel">
+          <div  *ngIf="website.invalid && (website.dirty ||website.touched)">
+              <div *ngIf="website.errors.required">
+                website  Name is required.
+              </div>
+          </div>
+      </div>
+
+
+      <div class="form-group">
+        <label><b>Company Name</b></label>
+        <input [(ngModel)]="seller.companyname" type="text" class="form-control form-control-lg" id="companyname" name="companyname" placeholder="Your Company name" required #companyname="ngModel">
+          <div  *ngIf="companyname.invalid && (companyname.dirty ||companyname.touched)">
+              <div *ngIf="companyname.errors.required">
+                Company  Name is required.
+              </div>
+          </div>
+      </div>
+
+      
+    <div class="form-group">
+        <label><b>Gstin</b></label>
+        <input  [(ngModel)]="seller.gstin" type="text" class="form-control form-control-lg" id="gstin" name="gstin" placeholder="gstin" minlength="3" required #gstin="ngModel">
+          <div  *ngIf="gstin.invalid && (gstin.dirty ||gstin.touched)">
+              <div *ngIf="gstin.errors.required">
+                gstin is required.
+              </div>
+              <div *ngIf="gstin.errors.minlength">
+                gstin must be at least 3 characters long.
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label><b> About Company</b></label>
+        <textarea [(ngModel)]="seller.briefaboutcompany" type="text" class="form-control form-control-lg" id="briefaboutcompany" name="briefaboutcompany" placeholder="Your Company name" required #briefaboutcompany="ngModel">
+        </textarea>
+            <div  *ngIf="briefaboutcompany.invalid && (briefaboutcompany.dirty ||briefaboutcompany.touched)">
+              <div *ngIf="briefaboutcompany.errors.required">
+               about Company is required.
+              </div>
+          </div>
+        
+      </div>
+
+
+    <div class="form-group">
+      <label><b>Password</b></label>
+      <input  [(ngModel)]="seller.password" type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" minlength="3" required #password="ngModel">
+        <div  *ngIf="password.invalid && (password.dirty ||password.touched)">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                Password must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label><b>Phone Numer</b></label>
+      <input [(ngModel)]="seller.contactnumber" type="number" class="form-control form-control-lg" id="contactnumber" name="contactnumber" placeholder="Phone Number" required #contactnumber="ngModel" >
+        <div  *ngIf="contactnumber.invalid && (contactnumber.dirty ||contactnumber.touched)">
+            <div *ngIf="contactnumber.errors.required">
+                Phone is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label><b>Postal Address</b></label>
+      <textarea [(ngModel)]="seller.postaladdress" type="text" class="form-control form-control-lg" id="postaladdress" name="postaladdress" placeholder="Address" required #postaladdress="ngModel">
+      </textarea>
+        <div  *ngIf="postaladdress.invalid && (postaladdress.dirty ||postaladdress.touched)">
+            <div *ngIf="postaladdress.errors.required">
+                Address is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!form.form.valid" >Sign Up</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,137 @@
+<h1   class="display-4 mb-5 text-center">Add Product</h1>
+<div style="width:40%; margin: 25px auto">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+       
+        <!--Name-->
+        <div class="form-group">
+            <label>Name</label>
+            <input [(ngModel)]="item.itemName" type="text" class="form-control form-control-lg" id="itemName"
+                   #itemName="ngModel"
+                   name="itemName" placeholder="Name" required>
+        </div>
+        <div *ngIf="itemName.invalid && (itemName.dirty ||itemName.touched)">
+            <div *ngIf="itemName.errors.required">
+                Name is required.
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="categoryid">category</label>
+            <select class="custom-select custom-select-lg " id="categoryid" name="categoryid"
+                    [(ngModel)]="item.categoryid"
+                    required>
+                <option [ngValue]=0>Home</option>
+                <option [ngValue]=1>Electrical</option>
+                <option [ngValue]=1>Mobiles</option>
+               
+            </select>
+        </div>
+
+        <!--Category-->
+        <div class="form-group">
+            <label for="subcategoryType">subCategory</label>
+            <select class="custom-select custom-select-lg " id="subcategoryid" name="subcategoryid"
+                    [(ngModel)]="item.subcategoryid"
+                    required>
+                <option [ngValue]=0>Mobiles</option>
+                <option [ngValue]=1>Electrical</option>
+                <option [ngValue]=2>Food</option>
+                <option [ngValue]=3>Home</option>
+                <option [ngValue]=3>Travel</option>
+
+            </select>
+        </div>
+
+       
+
+        <!--Description-->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control form-control-lg text-left"
+                      id="itemDescription" name="itemDescription"
+                      placeholder="Description" [(ngModel)]="item.itemDescription"></textarea>
+        </div>
+        <!--Price-->
+        <div class="form-group">
+            <label for="productPrice">Price</label>
+            <input class="form-control form-control-lg"
+                   type="number"
+                   id="itemCost"
+                   name="itemCost"
+                   #itemCost="ngModel"
+                   [ngModel]="item.itemCost" (ngModelChange)="item.itemCost=$event"
+                   required>
+            <div *ngIf="itemCost.invalid && (itemCost.dirty ||itemCost.touched)">
+                <div *ngIf="itemCost.errors.required">
+                    Price is required.
+                </div>
+            </div>
+        </div>
+        <!--Quantity-->
+        <div class="form-group">
+            <label for="productQuantity">Quantity</label>
+            <input class="form-control form-control-lg"
+                   type="number"
+                   id="quantity"
+                   name="quantity"
+                   min="0" #quantity="ngModel"
+                   [(ngModel)]="item.quantity"
+                   required>
+            <div *ngIf="quantity.invalid && (quantity.dirty ||quantity.touched)">
+                <div *ngIf="quantity.errors.required">
+                  Quantity is required.
+                </div>
+            </div>
+        </div>
+<!--Stock-->
+        <div class="form-group">
+            <label for="productStock">Stock</label>
+            <input class="form-control form-control-lg"
+                   type="text"
+                   id="stock"
+                   name="stock"
+                   min="0" #stock="ngModel"
+                   [(ngModel)]="item.stock"
+                   required>
+            <div *ngIf="stock.invalid && (stock.dirty ||stock.touched)">
+                <div *ngIf="stock.errors.required">
+                    Stock is required.
+                </div>
+            </div>
+        </div>
+        <!-- Model-->
+        <div class="form-group">
+            <label> Prodcut Model</label>
+            <input [(ngModel)]="item.model" type="text" class="form-control form-control-lg" id="model"
+                   #model="ngModel"
+                   name="model" placeholder="Prodcut Model" required>
+        </div>
+        <div *ngIf="model.invalid && (model.dirty ||model.touched)">
+            <div *ngIf="model.errors.required">
+                Model  is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Prodcut manufacturer</label>
+            <input [(ngModel)]="item.manufacturer" type="text" class="form-control form-control-lg" id="manufacturer"
+                   #manufacturer="ngModel"
+                   name="manufacturer" placeholder="manufacturer" required>
+
+                   <div *ngIf="manufacturer.invalid && (manufacturer.dirty ||manufacturer.touched)">
+                    <div *ngIf="manufacturer.errors.required">
+                        manufacturer  is required.
+                    </div>
+                </div>
+        </div>
+       
+        
+        <div class="form-group">
+            <button type="submit" [disabled]="!form.form.valid" class="btn btn-lg btn-primary btn-block">Submit</button>
+        </div>
+    </form>
+
+
+    <a (click)="show()" class= "btn btn-primary active" role="=button" routerLinkActive="active">Goto Added productlist</a>
+</div>
